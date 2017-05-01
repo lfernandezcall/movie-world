@@ -9,10 +9,13 @@
     <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
     <button ng-click="getMovieData()">Search API</button>
 <h1>{{ urlAPI }}</h1>
-<p>{{ 2 + 5 }}</p>
+<p>{{ 2 + 8 }}</p>
  
     <ul>
-      <li ng-repeat="movie in movies">{{ movie.title }}</li>
+      <li ng-repeat="movie in movies">{{ movie.title }}
+      <img ng-src="http://image.tmdb.org/t/p/w185/{{ movie.poster_path }}"/>
+      </li>
+      
     </ul>
 
 
@@ -28,6 +31,7 @@
         $scope.getMovieData = function() {
 
           var _movieName = $scope.movieName
+
 
           movieDataService.getMoviesArray(_movieName)
             .then( function(response) {
