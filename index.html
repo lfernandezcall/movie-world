@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="testAPIApp">
+<html lang="en" ng-app="mainApp">
 <head>
   <meta charset="UTF-8">
-  <title>testAPI</title>
+  <title>SearchMovieName</title>
 </head>
 <body>
-  <div ng-controller="testController">
-    <input style="width: 600px" type="text" ng-model="urlAPI" placeholder="Enter API url">
-    <button ng-click="getAPI()">Search API</button>
+  <form ng-controller="movieSearchController">
+    <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
+    <button ng-click="getMovieData()">Search API</button>
 <h1>{{ urlAPI }}</h1>
- <!--    <h2>Repos of {{ profile.name }}</h2>
+<p>{{ 2 + 5 }}</p>
+ 
     <ul>
-      <li ng-repeat="repo in repos">{{ repo.full_name }}</li>
-    </ul> -->
-  </div>
+      <li ng-repeat="movie in movies">{{ movie.title }}</li>
+    </ul>
+
+
+  </form>
 
 <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
 
   <script type="text/javascript">
 
-    angular.module('testAPIApp', [])
-      .controller('testController', function( $scope, APIService ) {
+    angular.module('mainApp', [])
+      .controller('movieSearchController', function( $scope, movieDataService ) {
 
-        $scope.getAPI = function() {
+        $scope.getMovieData = function() {
 
-          APIService.getAPIJson($scope.urlAPI)
-            .then( function(APIJson) {
+          var _movieName = $scope.movieName
+
+          movieDataService.getMoviesArray(_movieName)
+            .then( function(response) {
               
-              console.log(APIJson.data)
+              console.log(response.data.results)
+              $scope.movies = response.data.results
+
             })
 
         }
 
       })
-      .factory('APIService', function($http) {
+      .factory('movieDataService', function($http) {
 
-        function getAPIJson(x) {
-          
-          return $http.get(x)
+        function getMoviesArray(_movieName) {
+          var url = 'http://api.themoviedb.org/3/search/movie?api_key=d6ceefa77210945fb936085a6798e7a6&query='+ _movieName
+          return $http.get(url)
         }
 
         return {
-          getAPIJson: getAPIJson,
+          getMoviesArray: getMoviesArray
         
         }
 
