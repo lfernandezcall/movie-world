@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testAPIApp">
+<head>
+  <meta charset="UTF-8">
+  <title>testAPI</title>
+</head>
+<body>
+  <div ng-controller="testController">
+    <input style="width: 600px" type="text" ng-model="urlAPI" placeholder="Enter API url">
+    <button ng-click="getAPI()">Search API</button>
+<h1>{{ urlAPI }}</h1>
+ <!--    <h2>Repos of {{ profile.name }}</h2>
+    <ul>
+      <li ng-repeat="repo in repos">{{ repo.full_name }}</li>
+    </ul> -->
+  </div>
+
+<script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
+
+  <script type="text/javascript">
+
+    angular.module('testAPIApp', [])
+      .controller('testController', function( $scope, APIService ) {
+
+        $scope.getAPI = function() {
+
+          APIService.getAPIJson($scope.urlAPI)
+            .then( function(APIJson) {
+              
+              console.log(APIJson.data)
+            })
+
+        }
+
+      })
+      .factory('APIService', function($http) {
+
+        function getAPIJson(x) {
+          
+          return $http.get(x)
+        }
+
+        return {
+          getAPIJson: getAPIJson,
+        
+        }
+
+      })
+  </script>
+
+</body>
+</html>
