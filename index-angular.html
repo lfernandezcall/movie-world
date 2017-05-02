@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <title>SearchMovieName</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
 </head>
 
 <body>
-    <h1>{{ 2 + 5 }}</h1>
-    <h1>THIS IS THE INDEX.HTML</h1>
-    <a href="#/search">CLICK HERE TO SEE SEARCH.HTML</a>
+    <header>
+    <h1>This is an Angular test ==> {{ 2 + 5 }}</h1>
+    <h1>THIS IS THE INDEX HEADER</h1>
+    <div>
+    <a href="#/">HOME</a>
+    <a href="#/search">SEARCH</a>
+    </div>
+    </header>
 
     <ng-view></ng-view>
+
+    <footer><h3>THIS IS THE FOOTER</h3></footer>
 
     <!-- ____________________LOADING ANGULAR_______________________________ -->
   
@@ -24,7 +32,10 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
 
+    <script type="text/javascript" src="js/services/movieDataService.js"></script>
     <script type="text/javascript" src="js/controllers/movieSearchController.js"></script>
+    <script type="text/javascript" src="js/controllers/homeController.js"></script>
+    
     
 </body>
 
