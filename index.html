@@ -20,7 +20,9 @@
         list-style-type: none;
         transition: all .1s linear;
         display: inline-block;
-        margin: 0 0 0 0;
+    } 
+    #whiteText {
+        color: white;
     }
     
     li:hover {
@@ -34,25 +36,51 @@
 </head>
 
 <body>
-    <div ng-controller="searchController">
-        <header class="search-bar">
-            <form>
-                <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
-                <button ng-click="getMovieData()"><i class="glyphicon glyphicon-search"></i></button>
-            </form>
-        </header>
-        <h1>Movies list</h1>
-        <ul>
-            <li ng-repeat="movie in movies" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
-            </li>
-        </ul>
-<!--         <h1>TV Series list</h1>
-        <ul>
-            <li ng-repeat="serie in series" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ serie.poster_path }}" />
-            </li>
-        </ul> -->
+    <div class="container">
+        <div ng-controller="searchController">
+            <header class="search-bar container">
+                <form>
+                    <input type="text" ng-model="movieName" placeholder="Enter Movie">
+                    <button ng-click="getMovieData()"><i class="glyphicon glyphicon-search"></i></button>
+                </form>
+            </header>
+            <h1>Movies list</h1>
+            <ul>
+                <li ng-repeat="movie in movies" class="posters">
+                    <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
+                </li>
+            </ul>
+          
+        
+            <!-- Here we start with the window with the movie´s information -->
+            <div class="container row">
+                <div id="whiteText" class="col-md-6">
+                    <div>
+                        <!-- Here is the title of the movie-->
+                        <h2 id="whiteText">{{ movieTitle }}</h2>
+                        <h4><small>ReleaseDate</small></h4>
+                        <h4>{{ releaseDate }}</h4>
+                        <!-- Detalles especificos del producto -->
+                        <div>
+                            <h4><small>Popularity</small></h4>
+                            <div>
+                                <p>{{ voteAverage }}</p>
+                                <div>{{ popularity }}</div>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+                <div class="col-md-6 image-responsive"">
+                    <img class="img-responsive" ng-src="http://image.tmdb.org/t/p/w600{{ backdropPath }}" />
+                    <!-- Here we put the secondary image -->
+                </div>
+                <div class="col-md-12" id="whiteText">
+                        <!-- Here is the description -->
+                        <h4><small>Overview</small></h4>
+                        <small>{{ overview }}</small>           
+                </div>
+            </div>
+        </div>
     </div>
     <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
     <script type="text/javascript">
@@ -71,8 +99,14 @@
                                 movieObjectArray.splice(key, 1)
                             }
                         })
-                        console.log(movieObjectArray)
+                        console.log(movieObjectArray[0])
                         $scope.movies = movieObjectArray
+                        $scope.movieTitle = $scope.movies[0].title
+                        $scope.releaseDate = $scope.movies[0].release_date
+                        $scope.backdropPath = $scope.movies[0].backdrop_path
+                        $scope.overview = $scope.movies[0].overview
+                        $scope.popularity = $scope.movies[0].popularity
+
                     })
             }
         })
