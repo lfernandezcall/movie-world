@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SearchMovieName</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>{{ 2 + 5 }}</h1>
+    <h1>THIS IS THE INDEX.HTML</h1>
+    <a href="#/search">CLICK HERE TO SEE SEARCH.HTML</a>
+
+    <ng-view></ng-view>
+
+    <!-- ____________________LOADING ANGULAR_______________________________ -->
+  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    
+    <!-- _______________LOADING APP & CONFIG FILES_________________________ -->
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+
+    <script type="text/javascript" src="js/controllers/movieSearchController.js"></script>
+    
+</body>
+
+</html>
