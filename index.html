@@ -4,80 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>SearchMovieName</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <style type="text/css">
-    body {
-        background: black;
-    }
-    
-    .search-bar {
-        margin: 0 auto;
-    }
-    
-    .posters {
-        list-style-type: none;
-        transition: all .1s linear;
-        display: inline-block;
-        margin: 0 0 0 0;
-    }
-    
-    li:hover {
-        transform: scale(1.1);
-    }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 
 <body>
-    <form ng-controller="movieSearchController">
-        <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
-        <button ng-click="getMovieData()">Search API</button>
-        <ul>
-            <li ng-repeat="movie in movies" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
-            </li>
-        </ul>
-    </form>
-    <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
-    <script type="text/javascript">
-    angular.module('mainApp', [])
-        .controller('movieSearchController', function($scope, movieDataService) {
+    <h1>{{ 2 + 5 }}</h1>
+    <h1>THIS IS THE INDEX.HTML</h1>
+    <a href="#/search">CLICK HERE TO SEE SEARCH.HTML</a>
 
-            $scope.getMovieData = function() {
+    <ng-view></ng-view>
 
-                var _movieName = $scope.movieName
+    <!-- ____________________LOADING ANGULAR_______________________________ -->
+  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    
+    <!-- _______________LOADING APP & CONFIG FILES_________________________ -->
 
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
 
-                movieDataService.getMoviesArray(_movieName)
-                    .then(function(response) {
-                        var movieObjectArray = response.data.results
-                        movieObjectArray.forEach( function (movie, key){
-                            if (movie.poster_path === null){
-                                movieObjectArray.splice(key,1)
-                            }
-                        })
-
-                        console.log(movieObjectArray)
-                        $scope.movies = movieObjectArray 
-
-                    })
-
-            }
-
-        })
-        .factory('movieDataService', function($http) {
-
-            function getMoviesArray(_movieName) {
-                var url = 'http://api.themoviedb.org/3/search/movie?api_key=d6ceefa77210945fb936085a6798e7a6&query=' + _movieName
-                return $http.get(url)
-            }
-
-            return {
-                getMoviesArray: getMoviesArray
-
-            }
-
-        })
-    </script>
+    <script type="text/javascript" src="js/controllers/movieSearchController.js"></script>
+    
 </body>
 
 </html>
