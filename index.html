@@ -11,7 +11,9 @@
     }
     
     .search-bar {
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
     }
     
     .posters {
@@ -24,45 +26,55 @@
     li:hover {
         transform: scale(1.1);
     }
+    
+    img {
+        /*border: 1px solid red;*/
+    }
     </style>
 </head>
 
 <body>
-    <form ng-controller="movieSearchController">
-        <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
-        <button ng-click="getMovieData()">Search API</button>
+    <div ng-controller="searchController">
+        <header class="search-bar">
+            <form>
+                <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
+                <button ng-click="getMovieData()"><i class="glyphicon glyphicon-search"></i></button>
+            </form>
+        </header>
+        <h1>Movies list</h1>
         <ul>
             <li ng-repeat="movie in movies" class="posters">
                 <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
             </li>
         </ul>
-    </form>
+<!--         <h1>TV Series list</h1>
+        <ul>
+            <li ng-repeat="serie in series" class="posters">
+                <img ng-src="http://image.tmdb.org/t/p/w300/{{ serie.poster_path }}" />
+            </li>
+        </ul> -->
+    </div>
     <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
     <script type="text/javascript">
     angular.module('mainApp', [])
-        .controller('movieSearchController', function($scope, movieDataService) {
+        .controller('searchController', function($scope, movieDataService) {
 
             $scope.getMovieData = function() {
 
                 var _movieName = $scope.movieName
 
-
                 movieDataService.getMoviesArray(_movieName)
                     .then(function(response) {
                         var movieObjectArray = response.data.results
-                        movieObjectArray.forEach( function (movie, key){
-                            if (movie.poster_path === null){
-                                movieObjectArray.splice(key,1)
+                        movieObjectArray.forEach(function(movie, key) {
+                            if (movie.poster_path === null) {
+                                movieObjectArray.splice(key, 1)
                             }
                         })
-
                         console.log(movieObjectArray)
-                        $scope.movies = movieObjectArray 
-
+                        $scope.movies = movieObjectArray
                     })
-
             }
-
         })
         .factory('movieDataService', function($http) {
 
@@ -73,9 +85,7 @@
 
             return {
                 getMoviesArray: getMoviesArray
-
             }
-
         })
     </script>
 </body>
