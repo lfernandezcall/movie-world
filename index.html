@@ -20,11 +20,10 @@
         list-style-type: none;
         transition: all .1s linear;
         display: inline-block;
-        margin: 0 0 0 0;
     }
     
     li:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
     
     img {
@@ -37,8 +36,8 @@
     <div ng-controller="searchController">
         <header class="search-bar">
             <form>
-                <input style="width: 600px" type="text" ng-model="movieName" placeholder="Enter Movie">
-                <button ng-click="getMovieData()"><i class="glyphicon glyphicon-search"></i></button>
+                <input style="width: 600px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
+                <button ng-click="getData()"><i class="glyphicon glyphicon-search"></i></button>
             </form>
         </header>
         <h1>Movies list</h1>
@@ -47,44 +46,66 @@
                 <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
             </li>
         </ul>
-<!--         <h1>TV Series list</h1>
+        <h1>TV Series list</h1>
         <ul>
-            <li ng-repeat="serie in series" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ serie.poster_path }}" />
+            <li ng-repeat="tv in tvs" class="posters">
+                <img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" />
             </li>
-        </ul> -->
+        </ul>
     </div>
     <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
     <script type="text/javascript">
     angular.module('mainApp', [])
-        .controller('searchController', function($scope, movieDataService) {
+        .controller('searchController', function($scope, dataService) {
 
-            $scope.getMovieData = function() {
+            $scope.getData = function() {
 
-                var _movieName = $scope.movieName
+                var _movieName = $scope.userSearch
 
-                movieDataService.getMoviesArray(_movieName)
-                    .then(function(response) {
+                dataService.getMoviesArray(_movieName)
+                    .then(function(response) {                        
                         var movieObjectArray = response.data.results
-                        movieObjectArray.forEach(function(movie, key) {
-                            if (movie.poster_path === null) {
-                                movieObjectArray.splice(key, 1)
+                        var newMovieObjectArray = []
+                        console.log(movieObjectArray)
+                        movieObjectArray.forEach(function(movie, key) {                            
+                            if (movie.poster_path) {
+                                 newMovieObjectArray.push(movieObjectArray[key])
                             }
                         })
-                        console.log(movieObjectArray)
-                        $scope.movies = movieObjectArray
+                        $scope.movies = newMovieObjectArray
+                    })
+
+                var _tvName = $scope.userSearch
+
+                dataService.getTVArray(_tvName)
+                    .then(function(response) {                        
+                        var tvObjectArray = response.data.results
+                        var newTvObjectArray = []
+                        console.log(tvObjectArray)
+                        tvObjectArray.forEach(function(tv, key) {
+                            if (tv.poster_path) {
+                                newTvObjectArray.push(tvObjectArray[key])
+                            }
+                        })
+                        $scope.tvs = newTvObjectArray
                     })
             }
         })
-        .factory('movieDataService', function($http) {
+        .factory('dataService', function($http) {
 
             function getMoviesArray(_movieName) {
                 var url = 'http://api.themoviedb.org/3/search/movie?api_key=d6ceefa77210945fb936085a6798e7a6&query=' + _movieName
                 return $http.get(url)
             }
 
+            function getTVArray(_tvName) {
+                var url = 'http://api.themoviedb.org/3/search/tv?api_key=d6ceefa77210945fb936085a6798e7a6&query=' + _tvName
+                return $http.get(url)
+            }
+
             return {
-                getMoviesArray: getMoviesArray
+                getMoviesArray: getMoviesArray,
+                getTVArray: getTVArray
             }
         })
     </script>
