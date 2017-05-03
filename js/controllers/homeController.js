@@ -62,21 +62,10 @@ angular.module('mainApp')
                 })
 
         }
-
-        $scope.clickedMovie = function(index) {
-            $rootScope.movieTitle = $scope.movies[index].title
-            $rootScope.releaseDate = $scope.movies[index].release_date
-            $rootScope.backdropPath = $scope.movies[index].backdrop_path
-            $rootScope.overview = $scope.movies[index].overview
-            $rootScope.popularity = $scope.movies[index].popularity
-        }
-        $scope.clickedSerie = function(index) {
-            $rootScope.movieTitle = $scope.tvs[index].title
-            $rootScope.releaseDate = $scope.tvs[index].release_date
-            $rootScope.backdropPath = $scope.tvs[index].backdrop_path
-            $rootScope.overview = $scope.tvs[index].overview
-            $rootScope.popularity = $scope.tvs[index].popularity
-        }
+        // Here we link the $scope function with the $rootScope
+        $rootScope.clickedMovie = $scope.clickedMovie
+        $rootScope.clickedSerie = $scope.clickedSerie
+    
 
     })
     // URL'S
