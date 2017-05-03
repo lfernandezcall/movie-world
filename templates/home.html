@@ -1,4 +1,4 @@
-<div ng-controller="homeController">
+
     <style type="text/css">
     body {
         background: black;
@@ -36,7 +36,7 @@
 
    
    <!-- This is Alberto´s code -->
-	<div ng-controller="homeController">
+	
         <header class="search-bar">
             <form>
                 <input style="width: 300px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
@@ -52,25 +52,25 @@
         <h1>Movies list</h1>
         <ul> <!-- Added ng-click to get the info of the selected movie -->
             <li ng-click="clickedMovie(key)" ng-repeat="(key,movie) in movies" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
+                <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
               <!--   <{{ key }}> -->
             </li>
         </ul>
         <h1>TV Series list</h1>
         <ul>
             <li ng-click="clickedMovie(key)" ng-repeat="(key,tv) in tvs" class="posters">
-                     <img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" />
+                     <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" /></a>
             </li>
         </ul>
         <!-- Here we start with the window with the movie´s information -->
-        <div class="container row">
+       <!--  <div class="container row">
             <div id="whiteText" class="col-md-6">
                 <div>
-                    <!-- Here is the title of the movie-->
+                    
                     <h2 id="whiteText">{{ movieTitle }}</h2>
                     <h4><small>ReleaseDate</small></h4>
                     <h6>{{ releaseDate }}</h6>
-                    <!-- Detalles especificos del producto -->
+                    
                     <div>
                         <h4><small>Popularity</small></h4>
                         <div>
@@ -82,14 +82,13 @@
             </div>
             <div class="col-md-6 image-responsive" ">
                         <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ backdropPath }} " />
-                        <!-- Here we put the secondary image -->
+                        
             </div>
             <div class="col-md-12 " >
-                    <!-- Here is the description -->
+                    
                     <h4><small>Overview</small></h4>
                     <small id="whiteText" >{{ overview }}</small>           
             </div>
         </div>
-    </div>
+     -->
 
-</div>

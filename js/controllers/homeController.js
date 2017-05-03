@@ -1,7 +1,8 @@
 angular.module('mainApp')
-    .controller('homeController', function($scope, dataService) {
+    .controller('homeController', function($scope, $rootScope, dataService) {
         $scope.getData = function() {
-
+            
+            console.log ('CLICK')
             var _movieName = $scope.userSearch
 
             dataService.getMoviesArray(_movieName)
@@ -14,7 +15,7 @@ angular.module('mainApp')
                             newMovieObjectArray.push(movieObjectArray[key])
                         }
                     })
-                    $scope.movies = newMovieObjectArray
+                    $rootScope.movies = newMovieObjectArray
                 })
 
             var _tvName = $scope.userSearch
@@ -29,7 +30,7 @@ angular.module('mainApp')
                             newTvObjectArray.push(tvObjectArray[key])
                         }
                     })
-                    $scope.tvs = newTvObjectArray
+                    $rootScope.tvs = newTvObjectArray
                 })
 
             dataService.getGenreIdMovie()
@@ -58,16 +59,15 @@ angular.module('mainApp')
                 .then(function(response) {
                     console.log(response.data.genres)
                 })
-                // This is Albert´s function inside the homeController  
 
-            $scope.clickedMovie = function(index) {
-                $scope.movieTitle = $scope.movies[index].title
-                $scope.releaseDate = $scope.movies[index].release_date
-                $scope.backdropPath = $scope.movies[index].backdrop_path
-                $scope.overview = $scope.movies[index].overview
-                $scope.popularity = $scope.movies[index].popularity
-            }
+        }
 
+        $scope.clickedMovie = function(index) {
+            $rootScope.movieTitle = $scope.movies[index].title
+            $rootScope.releaseDate = $scope.movies[index].release_date
+            $rootScope.backdropPath = $scope.movies[index].backdrop_path
+            $rootScope.overview = $scope.movies[index].overview
+            $rootScope.popularity = $scope.movies[index].popularity
         }
 
 

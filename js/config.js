@@ -5,8 +5,8 @@ angular.module('mainApp')
         templateUrl: '/templates/home.html',
         controller: 'homeController'
       })
-      .when('/search', {
-        templateUrl: '/templates/search.html',
-        controller: 'movieSearchController'
+      .when('/movie', {
+        templateUrl: '/templates/movie.html',
+        controller: 'movieController'
       })
   })
