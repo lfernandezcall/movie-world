@@ -1,167 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="mainApp">
 
-
 <head>
     <meta charset="UTF-8">
     <title>SearchMovieName</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <style type="text/css">
-        body {
-            background: black;
-        }
-        
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        
-        .posters {
-            list-style-type: none;
-            transition: all .1s linear;
-            display: inline-block;
-        } 
-        #whiteText {
-            color: white;
-        }
-        
-        li:hover {
-            transform: scale(1.1);
-        }
-        
-        img {
-            /*border: 1px solid red;*/
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 </head>
 
 <body>
-    <div ng-controller="searchController">
-        <header class="search-bar">
-            <form>
-                <input style="width: 300px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
-                <button ng-click="getData()"><i class="glyphicon glyphicon-search"></i></button>
-            </form>
-        </header>
-        <h1>Genres</h1>
-        <ul>
-            <li ng-repeat="movie in movies">
-                <p>{{ movie.genre_ids }}</p>
-            </li>
-        </ul>
-        <h1>Movies list</h1>
-        <ul>
-            <li ng-repeat="movie in movies" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
-            </li>
-        </ul>
-        <h1>TV Series list</h1>
-        <ul>
-            <li ng-repeat="tv in tvs" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" />
-            </li>
-        </ul>
-        <!-- Here we start with the window with the movie´s information -->
-        <div class="container row">
-            <div id="whiteText" class="col-md-6">
-                <div>
-                    <!-- Here is the title of the movie-->
-                    <h2 id="whiteText">{{ movieTitle }}</h2>
-                    <h4><small>ReleaseDate</small></h4>
-                    <h6>{{ releaseDate }}</h6>
-                    <!-- Detalles especificos del producto -->
-                    <div>
-                        <h4><small>Popularity</small></h4>
-                        <div>
-                            <p>{{ voteAverage }}</p>
-                            <div>{{ popularity }}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 image-responsive" ">
-                        <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ backdropPath }} " />
-                        <!-- Here we put the secondary image -->
-            </div>
-            <div class="col-md-12" >
-                    <!-- Here is the description -->
-                    <h4><small>Overview</small></h4>
-                    <small id="whiteText" >{{ overview }}</small>           
-            </div>
-        </div>
+    <header>
+    <h1>This is an Angular test ==> {{ 2 + 5 }}</h1>
+    <h1>THIS IS THE INDEX HEADER</h1>
+    <div>
+    <a href="#/">HOME</a>
+    <a href="#/search">SEARCH</a>
     </div>
-    <script type="text/javascript " src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
-    <script type="text/javascript ">
-    angular.module('mainApp', [])
-        .controller('searchController', function($scope, dataService) {
-            $scope.getData = function() {
-                var _movieName = $scope.userSearch
-                dataService.getMoviesArray(_movieName)
-                    .then(function(response) {                        
-                        var movieObjectArray = response.data.results
-                        var newMovieObjectArray = []
-                        console.log(movieObjectArray)
-                        movieObjectArray.forEach(function(movie, key) {                            
-                            if (movie.poster_path) {
-                                 newMovieObjectArray.push(movieObjectArray[key])
-                            }
-                        })
-                        $scope.movies = movieObjectArray
-                        $scope.movieTitle = $scope.movies[0].title
-                        $scope.releaseDate = $scope.movies[0].release_date
-                        $scope.backdropPath = $scope.movies[0].backdrop_path
-                        $scope.overview = $scope.movies[0].overview
-                        $scope.popularity = $scope.movies[0].popularity
-                    })
-                var _tvName = $scope.userSearch
-                dataService.getTVArray(_tvName)
-                    .then(function(response) {                        
-                        var tvObjectArray = response.data.results
-                        var newTvObjectArray = []
-                        console.log(tvObjectArray)
-                        tvObjectArray.forEach(function(tv, key) {
-                            if (tv.poster_path) {
-                                newTvObjectArray.push(tvObjectArray[key])
-                            }
-                        })
-                        $scope.tvs = newTvObjectArray
-                    })
-                    dataService.getGenreIdMovie() 
-                        .then( function(response) {
-                            console.log(response)
-                        })
-                    
-                    dataService.getGenreIdTv() 
-                        .then( function(response) {
-                            console.log(response)
-                        })
-                    
-            }
-        })
-        .factory('dataService', function($http) {
-            function getMoviesArray(_movieName) {
-                var url = 'http://api.themoviedb.org/3/search/movie?api_key=d6ceefa77210945fb936085a6798e7a6&query=' + _movieName
-                return $http.get(url)
-            }
-            function getTVArray(_tvName) {
-                var url = 'http://api.themoviedb.org/3/search/tv?api_key=d6ceefa77210945fb936085a6798e7a6&query=' + _tvName
-                return $http.get(url)
-            }
-            function getGenreIdMovie() {
-                return $http.get('https://api.themoviedb.org/3/genre/movie/list?api_key=d6ceefa77210945fb936085a6798e7a6&language=en-US')
-            }
-            function getGenreIdTv() {             
-                return $http.get('https://api.themoviedb.org/3/genre/tv/list?api_key=d6ceefa77210945fb936085a6798e7a6&language=en-US')
-            }
-            return {
-                getMoviesArray: getMoviesArray,
-                getTVArray: getTVArray,
-                getGenreIdMovie: getGenreIdMovie,
-                getGenreIdTv: getGenreIdTv
-            }
-        })
-    </script>
+    </header>
+
+    <ng-view></ng-view>
+
+    <footer>
+    <h3>THIS IS THE FOOTER</h3>
+    </footer>
+
+    <!-- ____________________LOADING ANGULAR_______________________________ -->
+  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    
+    <!-- _______________LOADING APP & CONFIG FILES_________________________ -->
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+
+    <script type="text/javascript" src="js/services/movieDataService.js"></script>
+    <script type="text/javascript" src="js/controllers/movieSearchController.js"></script>
+    <script type="text/javascript" src="js/controllers/homeController.js"></script>
+    
+    
 </body>
 
 </html>
