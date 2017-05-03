@@ -2,7 +2,7 @@ angular.module('mainApp')
     .controller('homeController', function($scope, $rootScope, dataService) {
         $scope.getData = function() {
             
-            console.log ('CLICK')
+            
             var _movieName = $scope.userSearch
 
             dataService.getMoviesArray(_movieName)
