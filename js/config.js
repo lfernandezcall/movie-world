@@ -5,4 +5,8 @@ angular.module('mainApp')
                 templateUrl: '/templates/home.html',
                 controller: 'homeController'
             })
+            .when('/movie', {
+                templateUrl: '/templates/movie.html',
+                controller: 'movieController'
+            })
     })

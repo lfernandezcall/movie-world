@@ -1,4 +1,4 @@
-<div>
+
     <style type="text/css">
     body {
         background: black;
@@ -23,32 +23,67 @@
     li p {
         color: white;
     }
+    /*This is Alberto´s CSS*/
+    
+    #whiteText {
+        color: white;
+    }
     </style>
-   <!-- _______________________________________ -->
-
-<!--         <h1>Genres</h1>
+    <!-- _______________________________________ -->
+    <!--         <h1>Genres</h1> -->
+    <!-- This is Alberto´s code -->
+<!--     <header class="search-bar">
+        <form>
+            <input style="width: 300px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
+            <button ng-click="getData()"><i class="glyphicon glyphicon-search"></i></button>
+        </form>
+    </header> -->
+    <!--  <h1>Genres</h1>
         <ul>
             <li ng-repeat="movie in movies">
                 <p>{{ movie.genre_ids }}</p>
             </li>
         </ul> -->
-        <h1>Movies list</h1>
-        <ul>
-            <li ng-repeat="movie in movies" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
-            </li>
-        </ul>
-        <h1>TV Series list</h1>
-        <ul>
-            <li ng-repeat="tv in tvs" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" />
-            </li>
-        </ul>
-<!--         <h1>Actors</h1>
-        <ul>
-            <li ng-repeat="actor in actors" class="posters">
-                <img ng-src="http://image.tmdb.org/t/p/w300/{{ actor.poster_path }}" />
-            </li>
-        </ul> -->
-
-</div>
+    <h1>Movies list</h1>
+    <ul>
+        <!-- Added ng-click to get the info of the selected movie -->
+        <li ng-click="clickedMovie(key)" ng-repeat="(key,movie) in movies" class="posters">
+            <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+            <!--   <{{ key }}> -->
+        </li>
+    </ul>
+    <h1>TV Series list</h1>
+    <ul>
+        <li ng-click="clickedMovie(key)" ng-repeat="(key,tv) in tvs" class="posters">
+            <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" /></a>
+        </li>
+    </ul>
+    <!-- Here we start with the window with the movie´s information -->
+    <!--  <div class="container row">
+            <div id="whiteText" class="col-md-6">
+                <div>
+                    
+                    <h2 id="whiteText">{{ movieTitle }}</h2>
+                    <h4><small>ReleaseDate</small></h4>
+                    <h6>{{ releaseDate }}</h6>
+                    
+                    <div>
+                        <h4><small>Popularity</small></h4>
+                        <div>
+                            <p>{{ voteAverage }}</p>
+                            <div>{{ popularity }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 image-responsive" ">
+                        <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ backdropPath }} " />
+                        
+            </div>
+            <div class="col-md-12 " >
+                    
+                    <h4><small>Overview</small></h4>
+                    <small id="whiteText" >{{ overview }}</small>           
+            </div>
+        </div>
+     -->
