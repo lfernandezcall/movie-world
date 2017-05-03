@@ -12,16 +12,24 @@
                     <p>{{ voteAverage }}</p>
                     <div>{{ popularity }}</div>
                 </div>
+                <h4><small>Genres</small></h4>
+                <div>
+                    <ul>
+                        <li ng-repeat="genre in arrayGenre">
+                            <p>{{ genre }}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-6 image-responsive">
-    <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ backdropPath }} " />
-    <!-- Here we put the secondary image -->
+        <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ backdropPath }} " />
+        <!-- Here we put the secondary image -->
     </div>
-    <div class="col-md-12 " >
-            <!-- Here is the description -->
-            <h4><small>Overview</small></h4>
-            <small id="whiteText " >{{ overview }}</small>           
+    <div class="col-md-12 ">
+        <!-- Here is the description -->
+        <h4><small>Overview</small></h4>
+        <small id="whiteText ">{{ overview }}</small>
     </div>
 </div>

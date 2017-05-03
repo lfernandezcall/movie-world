@@ -2,20 +2,25 @@ angular.module('mainApp')
     .controller('homeController', function($scope, $rootScope, dataService) {
 
         $scope.getData = function() {
-            
+
             var _movieName = $scope.userSearch
 
             dataService.getMoviesArray(_movieName)
                 .then(function(response) {
                     var movieObjectArray = response.data.results
-                    var newMovieObjectArray = []
+                        //var newMovieObjectArray = []
                     console.log(movieObjectArray)
-                    movieObjectArray.forEach(function(movie, key) {
-                        if (movie.poster_path) {
-                            newMovieObjectArray.push(movieObjectArray[key])
-                        }
-                    })
-                    $rootScope.movies = newMovieObjectArray
+                    $rootScope.movies = movieObjectArray.filter(function(movie) {
+                        return movie.poster_path !== null
+                    });
+
+                    // movieObjectArray.forEach(function(movie, key) {
+                    //     if (movie.poster_path) {
+                    //         newMovieObjectArray.push(movieObjectArray[key])
+                    //     }
+                    // })
+                    // $rootScope.movies = newMovieObjectArray
+
                 })
 
             var _tvName = $scope.userSearch
@@ -23,42 +28,40 @@ angular.module('mainApp')
             dataService.getTVArray(_tvName)
                 .then(function(response) {
                     var tvObjectArray = response.data.results
-                    var newTvObjectArray = []
+                        //var newTvObjectArray = []
                     console.log(tvObjectArray)
-                    tvObjectArray.forEach(function(tv, key) {
-                        if (tv.poster_path) {
-                            newTvObjectArray.push(tvObjectArray[key])
-                        }
-                    })
-                    $rootScope.tvs = newTvObjectArray
+                    $rootScope.tvs = tvObjectArray.filter(function(tv) {
+                        return tv.poster_path !== null
+                    });
+                    // tvObjectArray.forEach(function(tv, key) {
+                    //     if (tv.poster_path) {
+                    //         newTvObjectArray.push(tvObjectArray[key])
+                    //     }
+                    // })
+                    // $rootScope.tvs = newTvObjectArray
                 })
 
-            dataService.getGenreIdMovie()
-                .then(function(response) {
-                    var genresIdArrayMovie = response.data.genres
-                    var idCode = $scope.movies
-                        // console.log(response.data.genres)
-                        // console.log(idCode)
-                    var arrayGenre = []
-                    idCode.forEach(function(genreA, keyA) {
-                        genresIdArrayMovie.forEach(function(genreB, keyB) {
-                            for (var i = 0; i <= idCode.length; i++) {
-                                if (genreA.genre_ids[i] === genreB.id) {
-                                    arrayGenre.push(genreB.name)
-                                    console.log(genreB.name)
+            // dataService.getGenreIdMovie()
+            //     .then(function(response) {
+            //         var genresIdArrayMovie = response.data.genres
+            //         var idGenreArrayEncoded = $scope.movies
+            //             // console.log(response.data.genres)
+            //         console.log(idGenreArrayEncoded)
+            //         $rootScope.arrayGenre = []
+            // idGenreArrayEncoded.forEach(function(genreA, keyA) {
+            //     $rootScope.movieMouseSelected = genreA.genre_ids
+            //     console.log("----------------")
+            //     console.log($rootScope.movieMouseSelected)
+            //     genresIdArrayMovie.forEach(function(genreB, keyB) {
+            //          for (var i = 0; i <= idGenreArrayEncoded.length; i++) {
+            //             if (genreA.genre_ids[i] === genreB.id) {
+            //                 $rootScope.arrayGenre.push(genreB.name)
+            //             }
+            //         }    
+            //     })
+            //     console.log($rootScope.arrayGenre)
+            // })
 
-                                }
-                            }
-                        })
-                        console.log(arrayGenre)
-                    })
-                })
-
-
-            dataService.getGenreIdTv()
-                .then(function(response) {
-                    console.log(response.data.genres)
-                })
 
         }
 
@@ -68,8 +71,54 @@ angular.module('mainApp')
             $rootScope.backdropPath = $scope.movies[index].backdrop_path
             $rootScope.overview = $scope.movies[index].overview
             $rootScope.popularity = $scope.movies[index].popularity
+            $rootScope.genre_ids = $scope.movies[index].genre_ids
+
+            if ($rootScope.backdropPath === null) {
+                $rootScope.backdropPath = $scope.movies[index].poster_path
+            }
+            console.log($rootScope.genre_ids)
+
+            dataService.getGenreIdMovie()
+                .then(function(response) {
+                    var genresIdArrayMovie = response.data.genres
+                    var idGenreArrayEncoded = $scope.movies
+                    $rootScope.arrayGenre = []
+                    $rootScope.genre_ids.forEach(function(genre, key) {
+                        genresIdArrayMovie.forEach(function(genreB, keyB) {
+                            if (genre === genreB.id) {
+                                $rootScope.arrayGenre.push(genreB.name)
+                            }
+                        })
+                    })
+                })
         }
 
+        $scope.clickedTv = function(index) {
+            $rootScope.movieTitle = $scope.tvs[index].name
+            $rootScope.releaseDate = $scope.tvs[index].first_air_date
+            $rootScope.backdropPath = $scope.tvs[index].backdrop_path
+            $rootScope.overview = $scope.tvs[index].overview
+            $rootScope.popularity = $scope.tvs[index].popularity
+            $rootScope.genre_ids = $scope.tvs[index].genre_ids
+
+            if ($rootScope.backdropPath === null) {
+                $rootScope.backdropPath = $scope.tvs[index].poster_path
+            }
+
+            dataService.getGenreIdTv()
+                .then(function(response) {
+                    var genresIdArrayTv = response.data.genres
+                    var idGenreArrayEncoded = $scope.tvs
+                    $rootScope.arrayGenre = []
+                    $rootScope.genre_ids.forEach(function(genre, key) {
+                        genresIdArrayTv.forEach(function(genreB, keyB) {
+                            if (genre === genreB.id) {
+                                $rootScope.arrayGenre.push(genreB.name)
+                            }
+                        })
+                    })
+                })
+        }
     })
     // URL'S
     // ______________________________________________________
