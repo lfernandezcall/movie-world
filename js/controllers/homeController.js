@@ -3,6 +3,7 @@ angular.module('mainApp')
 
         $scope.getData = function() {
 
+
             var _movieName = $scope.userSearch
 
             dataService.getMoviesArray(_movieName)
@@ -118,7 +119,15 @@ angular.module('mainApp')
                         })
                     })
                 })
+
+
         }
+        // Here we link the $scope function with the $rootScope
+        $rootScope.clickedMovie = $scope.clickedMovie
+        $rootScope.clickedSerie = $scope.clickedSerie
+    
+
+
     })
     // URL'S
     // ______________________________________________________

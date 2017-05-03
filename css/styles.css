@@ -24,6 +24,9 @@ body {
     display: inline-block;
     margin: 0 0 0 0;
 }
+#whiteText {
+    color: white;
+}
 
 li:hover { 
 	transform: scale(1.1); 
