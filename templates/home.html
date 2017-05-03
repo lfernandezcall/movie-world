@@ -1,7 +1,59 @@
-
-
-
 <div ng-controller="homeController">
-	<h2>{{ homeTitle }}</h2>
+    <style type="text/css">
+    body {
+        background: black;
+    }
     
+    .search-bar {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    
+    .posters {
+        list-style-type: none;
+        transition: all .1s linear;
+        display: inline-block;
+    }
+    
+    li.posters:hover {
+        transform: scale(1.05);
+    }
+    
+    li p {
+        color: white;
+    }
+    </style>
+   <!-- _______________________________________ -->
+	<header class="search-bar">
+            <form>
+                <input style="width: 600px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
+                <button ng-click="getData()"><i class="glyphicon glyphicon-search"></i></button>
+            </form>
+        </header>
+<!--         <h1>Genres</h1>
+        <ul>
+            <li ng-repeat="movie in movies">
+                <p>{{ movie.genre_ids }}</p>
+            </li>
+        </ul> -->
+        <h1>Movies list</h1>
+        <ul>
+            <li ng-repeat="movie in movies" class="posters">
+                <img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" />
+            </li>
+        </ul>
+        <h1>TV Series list</h1>
+        <ul>
+            <li ng-repeat="tv in tvs" class="posters">
+                <img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" />
+            </li>
+        </ul>
+<!--         <h1>Actors</h1>
+        <ul>
+            <li ng-repeat="actor in actors" class="posters">
+                <img ng-src="http://image.tmdb.org/t/p/w300/{{ actor.poster_path }}" />
+            </li>
+        </ul> -->
+
 </div>
