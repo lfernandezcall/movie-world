@@ -1,10 +1,21 @@
 
 body { 
-	background: black; 
+	background: black;
+
 }
 
-.search-bar { 
-	margin: 0 auto; 
+#search-bar { 
+	background: #444; 
+	top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    margin-top: 0; 
+}
+
+#search-content {
+	display: flex;
+	justify-content: center;
 }
 
 .posters {
@@ -20,3 +31,19 @@ li:hover {
 
 h2 {color: red;}
 
+footer{
+   background-color: #444;
+ 	margin-top: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    color: #CCC;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}

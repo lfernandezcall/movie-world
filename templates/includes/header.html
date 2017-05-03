@@ -1,0 +1,10 @@
+<header id="search-bar" ng-controller="homeController">
+    <div>
+        <a href="#/">HOME</a>
+        <a href="#/">SEARCH {{ 2 + 5 }}</a>
+    </div>
+    <form id="search-content">
+        <input style="width: 600px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
+        <button ng-click="getData()"><i class="glyphicon glyphicon-search"></i></button>
+    </form>
+</header>
