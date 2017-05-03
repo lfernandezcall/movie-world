@@ -58,6 +58,15 @@ angular.module('mainApp')
                 .then(function(response) {
                     console.log(response.data.genres)
                 })
+                // This is Albert´s function inside the homeController  
+
+            $scope.clickedMovie = function(index) {
+                $scope.movieTitle = $scope.movies[index].title
+                $scope.releaseDate = $scope.movies[index].release_date
+                $scope.backdropPath = $scope.movies[index].backdrop_path
+                $scope.overview = $scope.movies[index].overview
+                $scope.popularity = $scope.movies[index].popularity
+            }
 
         }
 
