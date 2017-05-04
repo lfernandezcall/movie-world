@@ -28,7 +28,7 @@ angular.module('mainApp')
                 })
         }
 
-        $scope.clickedMovie = function(index) {
+        $rootScope.clickedMovie = function(index) {
             $rootScope.movieTitle = $scope.movies[index].title
             $rootScope.releaseDate = $scope.movies[index].release_date
             $rootScope.backdropPath = $scope.movies[index].backdrop_path

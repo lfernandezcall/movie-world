@@ -1,0 +1,7 @@
+<h1>Home</h1>
+<ul>
+    <li ng-click="clickedMovie(key)" ng-repeat="(key,movie) in movies" class="posters">
+        <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+        <!--   <{{ key }}> -->
+    </li>
+</ul>

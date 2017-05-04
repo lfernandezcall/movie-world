@@ -19,11 +19,21 @@ angular.module('mainApp')
             return $http.get('https://api.themoviedb.org/3/genre/tv/list?api_key=d6ceefa77210945fb936085a6798e7a6&language=en-US')
         }
 
+        function getNewMovies() {
+            return $http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=d6ceefa77210945fb936085a6798e7a6&language=en-US&page=1')
+                .then(function (response){
+                    return response.data.results
+                })
+        }
+
+
+
         return {
             getMoviesArray: getMoviesArray,
             getTVArray: getTVArray,
             getGenreIdMovie: getGenreIdMovie,
-            getGenreIdTv: getGenreIdTv
+            getGenreIdTv: getGenreIdTv,
+            getNewMovies: getNewMovies
         }
 
     })
