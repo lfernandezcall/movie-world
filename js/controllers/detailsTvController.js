@@ -5,7 +5,12 @@ angular.module('mainApp')
       dataService.getTvById(idTv)
         .then(function (response) {
           var detailsTv = response.data
+          if (detailsTv.backdrop_path === null) { 
+          	$scope.imageTv = detailsTv.poster_path
+          }
+          else { $scope.imageTv = detailsTv.backdrop_path}
           $scope.tv = detailsTv
+
           console.log($scope.tv)
         })
     })

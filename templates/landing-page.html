@@ -1,6 +1,7 @@
 <div class="grid-home">
 <div class="posters-container">
 <ul>
+
     <li  ng-repeat="movie in movies" class="posters">
         <a ng-href="#/details/{{ movie.id }}"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
         <p class="title"><i class="glyphicon glyphicon-film"></i>  {{ movie.title }}</p>
