@@ -2,6 +2,7 @@ body {
     background: black;
 }
 
+
 #search-bar {
     background: #444;
     top: 0;
@@ -19,9 +20,31 @@ h2 {
     color: red;
 }
 
-footer {
-    background-color: #444;
-    margin-top: 20px;
+
+.posters {
+    list-style-type: none;
+    transition: all .1s linear;
+    display: inline-block;
+    margin: 0 0 0 0;
+}
+/*NAVBAR*/
+
+/*#logoImage {
+    background-image: url('img/logo.png')
+}
+/*HOME-----------------------------*/
+li:hover { 
+	transform: scale(1.1); 
+}
+/*MOVIE----------------------------*/
+h2 {
+    color: red;
+}
+/*FOOTER---------------------------*/
+
+footer{
+   background-color: #444;
+ 	margin-top: 20px;
     bottom: 0;
     left: 0;
     right: 0;
