@@ -3,7 +3,6 @@ angular.module('mainApp')
 
         $scope.getData = function() {
 
-
             var _movieName = $scope.userSearch
 
             dataService.getMoviesArray(_movieName)
@@ -14,14 +13,6 @@ angular.module('mainApp')
                     $rootScope.movies = movieObjectArray.filter(function(movie) {
                         return movie.poster_path !== null
                     });
-
-                    // movieObjectArray.forEach(function(movie, key) {
-                    //     if (movie.poster_path) {
-                    //         newMovieObjectArray.push(movieObjectArray[key])
-                    //     }
-                    // })
-                    // $rootScope.movies = newMovieObjectArray
-
                 })
 
             var _tvName = $scope.userSearch
@@ -34,36 +25,7 @@ angular.module('mainApp')
                     $rootScope.tvs = tvObjectArray.filter(function(tv) {
                         return tv.poster_path !== null
                     });
-                    // tvObjectArray.forEach(function(tv, key) {
-                    //     if (tv.poster_path) {
-                    //         newTvObjectArray.push(tvObjectArray[key])
-                    //     }
-                    // })
-                    // $rootScope.tvs = newTvObjectArray
                 })
-
-            // dataService.getGenreIdMovie()
-            //     .then(function(response) {
-            //         var genresIdArrayMovie = response.data.genres
-            //         var idGenreArrayEncoded = $scope.movies
-            //             // console.log(response.data.genres)
-            //         console.log(idGenreArrayEncoded)
-            //         $rootScope.arrayGenre = []
-            // idGenreArrayEncoded.forEach(function(genreA, keyA) {
-            //     $rootScope.movieMouseSelected = genreA.genre_ids
-            //     console.log("----------------")
-            //     console.log($rootScope.movieMouseSelected)
-            //     genresIdArrayMovie.forEach(function(genreB, keyB) {
-            //          for (var i = 0; i <= idGenreArrayEncoded.length; i++) {
-            //             if (genreA.genre_ids[i] === genreB.id) {
-            //                 $rootScope.arrayGenre.push(genreB.name)
-            //             }
-            //         }    
-            //     })
-            //     console.log($rootScope.arrayGenre)
-            // })
-
-
         }
 
         $scope.clickedMovie = function(index) {
@@ -123,8 +85,8 @@ angular.module('mainApp')
 
         }
         // Here we link the $scope function with the $rootScope
-        $rootScope.clickedMovie = $scope.clickedMovie
-        $rootScope.clickedSerie = $scope.clickedSerie
+        // $rootScope.clickedMovie = $scope.clickedMovie
+        // $rootScope.clickedTv = $scope.clickedTv
     
 
 
