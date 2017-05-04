@@ -1,10 +1,17 @@
-<header id="search-bar" ng-controller="homeController">
-    <div>
-        <a href="#/">HOME</a>
-        <a href="#/">SEARCH {{ 2 + 5 }}</a>
-    </div>
-    <form id="search-content">
-        <input style="width: 600px" type="text" ng-model="userSearch" placeholder="Enter Movie/TV">
-        <button ng-click="getData()"><i class="glyphicon glyphicon-search"></i></button>
-    </form>
+<header class="home" ng-controller="homeController">
+    <nav id="search-bar" class="navbar navbar-inverse">
+        <div class="container">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#/">Home</a></li>             
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="userSearch" placeholder="Enter Movie/TV">
+                    </div>
+                    <button ng-click="getData()" type="submit" class="btn btn-default">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 </header>

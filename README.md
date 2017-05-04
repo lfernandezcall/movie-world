@@ -3,5 +3,3 @@
 This project is developed by Simon Garmendia, Jaume Regas and me.
 
 
-
-LUIS ALBERTO
