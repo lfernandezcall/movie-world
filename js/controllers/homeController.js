@@ -1,8 +1,8 @@
 angular.module('mainApp')
-    .controller('homeController', function($scope, $rootScope, dataService) {
+    .controller('homeController', function($scope, $rootScope, $location, dataService) {
 
-        $scope.getData = function() {
-
+        $rootScope.getData = function() {
+            // e.preventDefault()
             var _movieName = $scope.userSearch
 
             dataService.getMoviesArray(_movieName)
@@ -26,6 +26,7 @@ angular.module('mainApp')
                         return tv.poster_path !== null
                     });
                 })
+                $location.path('/search')
         }
 
         $rootScope.clickedMovie = function(index) {

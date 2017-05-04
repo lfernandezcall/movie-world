@@ -1,5 +1,5 @@
 angular.module('mainApp')
-    .controller('movieController', function($scope, $rootScope, dataService) {
+    .controller('movieController', function($scope, $rootScope, $location, dataService) {
 
 
         // $rootScope.clickedMovie = function(index) {

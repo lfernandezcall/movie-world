@@ -1,16 +1,20 @@
 angular.module('mainApp')
-    .config(function($routeProvider) {
-        $routeProvider
+    .config(function ($routeProvider) {
+      $routeProvider
             .when('/', {
-                templateUrl: '/templates/landing-page.html',
-                controller: 'newMovieController'
+              templateUrl: '/templates/landing-page.html',
+              controller: 'newMovieController'
             })
-            .when('/search', {
-                templateUrl: '/templates/home.html',
-                controller: 'homeController'
+            .when('/search/:querySearch', {
+              templateUrl: '/templates/results.html',
+              controller: 'resultsController'
             })
-            .when('/movie', {
-                templateUrl: '/templates/movie.html',
-                controller: 'movieController'
+            .when('/details/:id', {
+              templateUrl: '/templates/details.html',
+              controller: 'detailsController'
+            })
+            .when('/details-tv/:id', {
+              templateUrl: '/templates/details-tv.html',
+              controller: 'detailsTvController'
             })
     })

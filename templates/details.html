@@ -1,0 +1,34 @@
+<div  id="whiteText" class="container row">
+    <div  class="col-md-6">
+        <div>
+            <!-- Here is the title of the movie-->
+            <h2>{{ movie.title }}</h2>
+            <h4><small>ReleaseDate</small></h4>
+            <h6>{{ movie.release_date }}</h6>
+            <div>
+                <h4><small>Popularity</small></h4>
+                <div>
+                    <p>{{ movie.vote_average }}</p>
+                    <div>{{ movie.popularity }}</div>
+                </div>
+                <h4><small>Genres</small></h4>
+                <div>
+                    <ul>
+                        <li ng-repeat="genre in movie.genres">
+                            <p>{{ genre.name }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 image-responsive">
+        <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ movie.backdrop_path }} " />
+        <!-- Here we put the secondary image -->
+    </div>
+    <div class="col-md-12 ">
+        <!-- Here is the description -->
+        <h4><small>Overview</small></h4>
+        <small">{{ movie.overview }}</small>
+    </div>
+</div>

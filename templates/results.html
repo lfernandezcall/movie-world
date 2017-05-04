@@ -1,0 +1,16 @@
+<div id="movies_list">
+    <h1>Movies list</h1>
+    <ul>
+        <!-- Added ng-click to get the info of the selected movie -->
+        <li ng-repeat="movie in movies" class="posters">
+            <a ng-href="#/details/{{movie.id}}"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+            <!--   <{{ key }}> -->
+        </li>
+    </ul>
+    <h1>TV Series list</h1>
+    <ul>
+        <li ng-repeat="tv in tvs" class="posters">
+            <a ng-href="#/details-tv/{{tv.id}}"><img ng-src="http://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" /></a>
+        </li>
+    </ul>
+</div>

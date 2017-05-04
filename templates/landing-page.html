@@ -1,7 +1,13 @@
-<h1>Home</h1>
+<div class="grid-home">
+<div class="posters-container">
 <ul>
-    <li ng-click="clickedMovie(key)" ng-repeat="(key,movie) in movies" class="posters">
-        <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
-        <!--   <{{ key }}> -->
+    <li  ng-repeat="movie in movies" class="posters">
+        <a ng-href="#/details/{{ movie.id }}"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+        <p class="title"><i class="glyphicon glyphicon-film"></i>  {{ movie.title }}</p>
+        <p class="release-date"><i class="glyphicon glyphicon-calendar"></i>  {{ movie.release_date }}</p>
+
     </li>
+
 </ul>
+</div>
+<div>
