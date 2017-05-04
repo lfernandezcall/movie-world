@@ -1,7 +1,10 @@
-<h1>Home</h1>
+<div class="grid-home">
+<div class="posters-container">
 <ul>
     <li ng-click="clickedMovie(key)" ng-repeat="(key,movie) in movies" class="posters">
-        <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+        <a href="#/movie"><img ng-src="http://image.tmdb.org/t/p/w185/{{ movie.poster_path }}" /></a>
         <!--   <{{ key }}> -->
     </li>
 </ul>
+</div>
+<div>
