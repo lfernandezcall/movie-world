@@ -1,4 +1,4 @@
-<div  id="whiteText" class="container row">
+<div  id="whiteText" class="row">
     <div  class="col-md-6">
         <div>
             <!-- Here is the title of the movie-->
@@ -22,13 +22,13 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 image-responsive">
+    <div class="col-md-6 image-responsive" ng-show="imageTv">
         <img class="img-responsive " ng-src="http://image.tmdb.org/t/p/w600{{ imageTv }} " />
         <!-- Here we put the secondary image -->
     </div>
     <div class="col-md-12 ">
         <!-- Here is the description -->
         <h4><small>Overview</small></h4>
-        <small">{{ tv.overview }}</small>
+        <small>{{ tv.overview }}</small>
     </div>
 </div>
