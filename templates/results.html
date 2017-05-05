@@ -1,24 +1,24 @@
 <div class="grid-home movies-list">
-<div class="posters-container">
-    <h1><i class="glyphicon glyphicon-menu-hamburger"></i>Movies list</h1>
-    <ul>
-        <!-- Added ng-click to get the info of the selected movie -->
-        <li ng-repeat="movie in movies" class="posters">
-            <a ng-href="#details/{{movie.id}}"><img ng-src="https://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
-            <p class="title"><i class="glyphicon glyphicon-film"></i>  {{ movie.title }}</p>
-        <p class="release-date"><i class="glyphicon glyphicon-calendar"></i>  {{ movie.release_date }}</p>
-        </li>
-    </ul>
-     </div>
-     <div class="posters-container">
-    <h1><i class="glyphicon glyphicon-menu-hamburger"></i>TV Series list</h1>
-    <ul>
-        <li ng-repeat="tv in tvs" class="posters">
-            <a ng-href="#details-tv/{{tv.id}}"><img ng-src="https://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" /></a>
-            <p class="title"><i class="glyphicon glyphicon-film"></i>  {{ tv.name }}</p>
-        </li>
-    </ul>
+    <h1>Showing {{ movies.length}} movies for "{{ querySearch }}"</h1>
+    <div class="posters-container">
+        <h1><i class="glyphicon glyphicon-menu-hamburger"></i>Movies list</h1>
+        <ul>
+            <!-- Added ng-click to get the info of the selected movie -->
+            <li ng-repeat="movie in movies" class="posters">
+                <a ng-href="#details/{{movie.id}}"><img ng-src="https://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+                <p class="title"><i class="glyphicon glyphicon-film"></i> {{ movie.title }}</p>
+                <p class="release-date"><i class="glyphicon glyphicon-calendar"></i> {{ movie.release_date }}</p>
+            </li>
+        </ul>
     </div>
-   
+    <h1>Showing {{ tvs.length}} TV Shows for "{{ querySearch }}"</h1>
+    <div class="posters-container">
+        <h1><i class="glyphicon glyphicon-menu-hamburger"></i>TV Series list</h1>
+        <ul>
+            <li ng-repeat="tv in tvs" class="posters">
+                <a ng-href="#details-tv/{{tv.id}}"><img ng-src="https://image.tmdb.org/t/p/w300/{{ tv.poster_path }}" /></a>
+                <p class="title"><i class="glyphicon glyphicon-film"></i> {{ tv.name }}</p>
+            </li>
+        </ul>
+    </div>
 </div>
-

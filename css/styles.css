@@ -121,7 +121,7 @@ input[type=button]:hover {
 /*FOOTER---------------------------*/
 
 footer {
-    background-color: #444;
+    background-color: #222;
     margin-top: 0;
     bottom: 0;
     left: 0;
@@ -201,6 +201,15 @@ footer p {
     margin: 0 0 10px 50px;
     color: #FFBA00;
     padding-top: 30px;
+}
+
+.grid-home h3 {
+    color: #FFBA00;
+    font-weight: 100;
+    letter-spacing: 1px;
+    padding-top: 40px;
+    padding-left: 50px;
+    margin-top: 0px;
 }
 
 .glyphicon-star {

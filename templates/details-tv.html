@@ -1,34 +1,47 @@
-<div  id="whiteText" class="row">
-    <div  class="col-md-6">
-        <div>
-            <!-- Here is the title of the movie-->
-            <h2>{{ tv.name }}</h2>
-            <h4><small>ReleaseDate</small></h4>
-            <h6>{{ tv.first_air_date }}</h6>
-            <div>
-                <h4><small>Popularity</small></h4>
-                <div>
-                    <p>{{ tv.vote_average }}</p>
-                    <div>{{ tv.popularity }}</div>
+<div class="details-page">
+    <div id="white-text" class="row">
+        <div class="col-md-6">
+            <h2><i class="glyphicon glyphicon-film"></i>{{ tv.name }}</h2>
+            <h3>{{ tv.tagline }}</h3>
+            <div class="row">
+                <div class="col-md-6 left-content">
+                    <h4>Genres</h4>
+                    <div>
+                        <ul>
+                            <li ng-repeat="genre in tv.genres">
+                                <p>{{ genre.name }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <h4>ReleaseDate</h4>
+                    <p><i class="glyphicon glyphicon-calendar small-icon"></i>{{ tv.first_air_date }}</p>
                 </div>
-                <h4><small>Genres</small></h4>
-                <div>
-                    <ul>
-                        <li ng-repeat="genre in tv.genres">
-                            <p>{{ genre.name }}</p>
-                        </li>
-                    </ul>
+                <div class="col-md-6 right-content">                  
+                    <div>
+                        <h4>User Rating</h4>
+                        <div>
+                            <p><i class="glyphicon glyphicon-star small-icon"></i>{{ tv.vote_average }}</p>
+                        </div>
+                        <h4>Votes</h4>
+                        <div>
+                            <p><i class="glyphicon glyphicon-user small-icon"></i>{{ tv.vote_count }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+                <!-- Here is the description -->
+                <div class="description">
+                <h4>Overview</h4>
+                <p>{{ tv.overview }}</p>
+                </div>
+        
+        </div>
+        <div class="col-md-6">
+        <div class="col-md-12" ng-show="imageTv">
+            <img class="img-responsive details-image" ng-src="https://image.tmdb.org/t/p/w600{{ imageTv }} " />
+            <!-- Here we put the secondary image -->
+        </div>
         </div>
     </div>
-    <div class="col-md-6 image-responsive" ng-show="imageTv">
-        <img class="img-responsive " ng-src="https://image.tmdb.org/t/p/w600{{ imageTv }} " />
-        <!-- Here we put the secondary image -->
-    </div>
-    <div class="col-md-12 ">
-        <!-- Here is the description -->
-        <h4><small>Overview</small></h4>
-        <small>{{ tv.overview }}</small>
-    </div>
+    
 </div>

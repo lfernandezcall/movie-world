@@ -1,7 +1,7 @@
 angular.module('mainApp')
     .controller('resultsController', function ($scope, $routeParams, $rootScope, dataService) {
       var querySearch = $routeParams.querySearch
-
+      $scope.querySearch = querySearch
       dataService.getMoviesArray(querySearch)
             .then(function (response) {
               var movieObjectArray = response.data.results
