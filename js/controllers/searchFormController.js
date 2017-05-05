@@ -2,9 +2,12 @@ angular.module('mainApp')
     .controller('searchFormController', function ($scope, $location, $rootScope, dataService) {
   
       $scope.getData = function () {
+
         var query = $scope.userSearch
         $location.path('/search/' + query)
+        $scope.userSearch = ''
       }
+
     })
 
     // URL'S
