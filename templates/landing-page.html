@@ -3,7 +3,7 @@
     <h1><i class="glyphicon glyphicon-star"></i>Movies in theatres</h1>
         <ul>
             <li ng-repeat="movie in movies" class="posters">
-                <a ng-href="#details/{{ movie.id }}"><img ng-src="http://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
+                <a ng-href="#details/{{ movie.id }}"><img ng-src="https://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" /></a>
                 <p class="title"><i class="glyphicon glyphicon-film"></i> {{ movie.title }}</p>
                 <p class="release-date"><i class="glyphicon glyphicon-calendar"></i> {{ movie.release_date }}</p>
             </li>
