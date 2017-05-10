@@ -5,7 +5,7 @@ This repository contains the 4th week front-end project of [SKYLAB´s](http://ww
 We have worked in [*Movie World*](https://lfernandezcall.github.io/movie_world/#/) with the API of ["The Movie DB"](https://www.themoviedb.org/), they give you a _Json_ with a lot of posibilities. Here you have our MVP, we used _agile_ method for project management.
 With our _Web app_ yuo can search Movies or Tv series and the results will be a description and some more information.
 
-
+![movie_world](https://github.com/lfernandezcall/movie_world/blob/master/img/screen_shot.png?raw=true)
 
 
 
