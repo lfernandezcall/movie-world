@@ -4,11 +4,7 @@
 
 # Movie World
 
-This repository contains the 4th week front-end project of [SKYLAB´s](http://www.skylabcoders.com/es/) bootcamp, was made with [HTML](https://developer.mozilla.org/es/docs/Web/HTML), [CSS](https://developer.mozilla.org/es/docs/Web/CSS) and [Angular](https://angularjs.org/).
-
-We have worked in [**Movie World**](https://lfernandezcall.github.io/movie_world/#/) with the API of ["The Movie DB"](https://www.themoviedb.org/), they give you a [Json](https://en.wikipedia.org/wiki/JSON) with a lot of posibilities. 
-Here you have our [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product), we used [Agile](http://agilemethodology.org/) method for project management.
-
+This repository contains my branch of the 4th week project.
 
 ![movie_world](https://github.com/lfernandezcall/movie_world/blob/master/img/screen_shot.png?raw=true)
 
